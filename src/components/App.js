@@ -35,12 +35,17 @@ function App() {
     },
   ];
   const [doneFlashCards, setDoneFlashCards] = useState(0);
+  const [condition, setCondition] = useState(0);
 
   return (
     <>
       <GlobalStyle />
       <Header />
-      <Content cards={cards} onClickFunction={() => alert("olá")} />
+      <Content
+        cards={cards}
+        condition={condition}
+        onClickFunction={() => setCondition(condition + 1)}
+      />
       <Footer totalFlashCards={cards.length} doneFlashCards={doneFlashCards} />
     </>
   );

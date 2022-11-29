@@ -43,5 +43,6 @@ const Container = styled.div`
     font-weight: 400;
     color: #ffffff;
     border: none;
+    cursor: pointer;
   }
 `;

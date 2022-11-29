@@ -27,5 +27,6 @@ const Container = styled.div`
   img {
     width: 20px;
     height: 23px;
+    cursor: pointer;
   }
 `;

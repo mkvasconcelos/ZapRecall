@@ -1,11 +1,11 @@
 import React from "react";
 import styled from "styled-components";
 
-export default function Question({ question }) {
+export default function Question({ question, onClickFunction }) {
   return (
     <Container>
       <p>{question}</p>
-      <img src="assets/img/seta_virar.png"></img>
+      <img onClick={onClickFunction} src="assets/img/seta_virar.png"></img>
     </Container>
   );
 }
@@ -29,5 +29,6 @@ const Container = styled.div`
     right: 15px;
     width: 30px;
     height: 20px;
+    cursor: pointer;
   }
 `;
