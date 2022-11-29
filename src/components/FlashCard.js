@@ -1,9 +1,9 @@
 import React from "react";
 import styled from "styled-components";
 
-export default function FlashCard({ number }) {
+export default function FlashCard({ number, onClickFunction }) {
   return (
-    <Container>
+    <Container onClick={onClickFunction}>
       <p>Pergunta {number}</p>
       <img src="assets/img/seta_play.png"></img>
     </Container>

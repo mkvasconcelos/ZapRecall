@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import GlobalStyle from "./glogalStyles";
 import Footer from "./Footer";
 import Header from "./Header";
@@ -34,12 +34,14 @@ function App() {
         "Dizer para o React quais informações quando atualizadas devem renderizar a tela novamente",
     },
   ];
+  const [doneFlashCards, setDoneFlashCards] = useState(0);
+
   return (
     <>
       <GlobalStyle />
       <Header />
-      <Content cards={cards} />
-      <Footer />
+      <Content cards={cards} onClickFunction={() => alert("olá")} />
+      <Footer totalFlashCards={cards.length} doneFlashCards={doneFlashCards} />
     </>
   );
 }
