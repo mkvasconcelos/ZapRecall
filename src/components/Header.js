@@ -13,6 +13,7 @@ export default function Header() {
 const Container = styled.header`
   font-family: "Righteous", Arial, Helvetica, sans-serif;
   font-size: 36px;
+  font-weight: 400;
   display: flex;
   flex-direction: row;
   justify-content: center;
