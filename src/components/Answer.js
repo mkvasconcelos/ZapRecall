@@ -1,7 +1,21 @@
 import React from "react";
 import styled from "styled-components";
 
-export default function Question({ answer, number, clickCard, clickButton }) {
+export default function Question({
+  answer,
+  number,
+  clickCard,
+  answerButton,
+  setAnswerButton,
+  doneFlashCards,
+  setDoneFlashCards,
+}) {
+  function clickButton(card, value) {
+    const newAnswerButton = [...answerButton];
+    newAnswerButton[card - 1] = value;
+    setAnswerButton(newAnswerButton);
+    setDoneFlashCards(doneFlashCards + 1);
+  }
   return (
     <Container>
       <p>{answer}</p>

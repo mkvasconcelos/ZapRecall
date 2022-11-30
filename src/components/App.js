@@ -4,7 +4,7 @@ import Footer from "./Footer";
 import Header from "./Header";
 import Content from "./Content";
 
-function App() {
+export default function App() {
   const cards = [
     {
       question: "O que é JSX?",
@@ -38,21 +38,6 @@ function App() {
   const [answerButton, setAnswerButton] = useState([0, 0, 0, 0, 0, 0, 0, 0]);
   const [condition, setCondition] = useState([1, 1, 1, 1, 1, 1, 1, 1]);
 
-  function clickCard(card) {
-    const newCondition = [...condition];
-    newCondition[card - 1] === 3
-      ? (newCondition[card - 1] = 1)
-      : newCondition[card - 1]++;
-    setCondition(newCondition);
-  }
-
-  function clickButton(card, value) {
-    const newAnswerButton = [...answerButton];
-    newAnswerButton[card - 1] = value;
-    setAnswerButton(newAnswerButton);
-    setDoneFlashCards(doneFlashCards + 1);
-  }
-
   return (
     <>
       <GlobalStyle />
@@ -60,13 +45,13 @@ function App() {
       <Content
         cards={cards}
         condition={condition}
-        clickCard={clickCard}
+        setCondition={setCondition}
         answerButton={answerButton}
-        clickButton={clickButton}
+        setAnswerButton={setAnswerButton}
+        setDoneFlashCards={setDoneFlashCards}
+        doneFlashCards={doneFlashCards}
       />
       <Footer totalFlashCards={cards.length} doneFlashCards={doneFlashCards} />
     </>
   );
 }
-
-export default App;

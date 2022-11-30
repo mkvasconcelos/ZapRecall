@@ -7,9 +7,11 @@ import styled from "styled-components";
 export default function Content({
   cards,
   condition,
-  clickCard,
-  clickButton,
+  setCondition,
   answerButton,
+  setAnswerButton,
+  doneFlashCards,
+  setDoneFlashCards,
 }) {
   const obj = [];
   cards.map((c) =>
@@ -32,13 +34,23 @@ export default function Content({
       3: (
         <Answer
           clickCard={clickCard}
-          clickButton={clickButton}
           number={cards.indexOf(c) + 1}
           answer={c.answer}
+          answerButton={answerButton}
+          setAnswerButton={setAnswerButton}
+          doneFlashCards={doneFlashCards}
+          setDoneFlashCards={setDoneFlashCards}
         />
       ),
     })
   );
+  function clickCard(card) {
+    const newCondition = [...condition];
+    newCondition[card - 1] === 3
+      ? (newCondition[card - 1] = 1)
+      : newCondition[card - 1]++;
+    setCondition(newCondition);
+  }
   return <Container>{obj.map((x) => x[x.condition])}</Container>;
 }
 
