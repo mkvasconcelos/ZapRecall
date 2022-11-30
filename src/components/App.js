@@ -35,8 +35,12 @@ function App() {
     },
   ];
   const [doneFlashCards, setDoneFlashCards] = useState(0);
-  const [condition, setCondition] = useState(0);
+  const [condition, setCondition] = useState([1, 1, 1, 1, 1, 1, 1, 1]);
+  const [list, setList] = useState([]);
 
+  function clickCard(card) {
+    setList([...list, card]);
+  }
   return (
     <>
       <GlobalStyle />
@@ -44,7 +48,13 @@ function App() {
       <Content
         cards={cards}
         condition={condition}
-        onClickFunction={() => setCondition(condition + 1)}
+        clickCard={clickCard}
+        onClickFunction={() => {
+          const newCondition = [...condition];
+          console.log(list[list.length - 1]);
+          newCondition[list[list.length - 1]] += 1;
+          setCondition(newCondition);
+        }}
       />
       <Footer totalFlashCards={cards.length} doneFlashCards={doneFlashCards} />
     </>

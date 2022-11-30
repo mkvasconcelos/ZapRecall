@@ -14,7 +14,7 @@ export default function Question({ answer }) {
   );
 }
 
-const Container = styled.div`
+const Container = styled.button`
   background-color: #ffffd4;
   height: 130px;
   width: 300px;
@@ -26,6 +26,9 @@ const Container = styled.div`
   color: #333333;
   position: relative;
   padding: 15px;
+  border: none;
+  display: flex;
+  text-align: start;
 
   div {
     display: flex;

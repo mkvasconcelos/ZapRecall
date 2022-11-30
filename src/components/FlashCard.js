@@ -1,16 +1,19 @@
 import React from "react";
 import styled from "styled-components";
 
-export default function FlashCard({ number, onClickFunction }) {
+export default function FlashCard({ number, onClickFunction, clickCard }) {
   return (
     <Container onClick={onClickFunction}>
       <p>Pergunta {number}</p>
-      <img src="assets/img/seta_play.png"></img>
+      <img
+        onClick={() => clickCard(number)}
+        src="assets/img/seta_play.png"
+      ></img>
     </Container>
   );
 }
 
-const Container = styled.div`
+const Container = styled.button`
   background-color: #ffffff;
   height: 65px;
   width: 300px;
@@ -23,6 +26,7 @@ const Container = styled.div`
   font-weight: 700;
   font-size: 16px;
   padding: 0 15px;
+  border: none;
 
   img {
     width: 20px;
