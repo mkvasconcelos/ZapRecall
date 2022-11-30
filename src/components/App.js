@@ -35,19 +35,12 @@ export default function App() {
     },
   ];
   const [doneFlashCards, setDoneFlashCards] = useState(0);
-  const [answerButton, setAnswerButton] = useState([0, 0, 0, 0, 0, 0, 0, 0]);
-  const [condition, setCondition] = useState([1, 1, 1, 1, 1, 1, 1, 1]);
-
   return (
     <>
       <GlobalStyle />
       <Header />
       <Content
         cards={cards}
-        condition={condition}
-        setCondition={setCondition}
-        answerButton={answerButton}
-        setAnswerButton={setAnswerButton}
         setDoneFlashCards={setDoneFlashCards}
         doneFlashCards={doneFlashCards}
       />

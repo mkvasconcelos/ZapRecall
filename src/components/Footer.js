@@ -3,7 +3,7 @@ import styled from "styled-components";
 
 export default function Footer({ doneFlashCards, totalFlashCards }) {
   return (
-    <Container>
+    <Container data-test="footer">
       <p>
         {doneFlashCards}/{totalFlashCards} CONCLUÍDOS
       </p>

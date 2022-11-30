@@ -1,37 +1,39 @@
-import React from "react";
+import React, { useState } from "react";
 import FlashCard from "./FlashCard";
 import Question from "./Question";
 import Answer from "./Answer";
 import styled from "styled-components";
 
-export default function Content({
-  cards,
-  condition,
-  setCondition,
-  answerButton,
-  setAnswerButton,
-  doneFlashCards,
-  setDoneFlashCards,
-}) {
+export default function Content({ cards, doneFlashCards, setDoneFlashCards }) {
+  const arr = new Array(cards.length).fill(0);
+  const [answerButton, setAnswerButton] = useState([...arr]);
+  const [condition, setCondition] = useState([...arr]);
+  function clickCard(card) {
+    const newCondition = [...condition];
+    newCondition[card - 1] === 2
+      ? (newCondition[card - 1] = 0)
+      : newCondition[card - 1]++;
+    setCondition(newCondition);
+  }
   const obj = [];
   cards.map((c) =>
     obj.push({
       condition: condition[cards.indexOf(c)],
-      1: (
+      0: (
         <FlashCard
           number={cards.indexOf(c) + 1}
           clickCard={clickCard}
           answerButton={answerButton[cards.indexOf(c)]}
         />
       ),
-      2: (
+      1: (
         <Question
           clickCard={clickCard}
           number={cards.indexOf(c) + 1}
           question={c.question}
         />
       ),
-      3: (
+      2: (
         <Answer
           clickCard={clickCard}
           number={cards.indexOf(c) + 1}
@@ -44,14 +46,11 @@ export default function Content({
       ),
     })
   );
-  function clickCard(card) {
-    const newCondition = [...condition];
-    newCondition[card - 1] === 3
-      ? (newCondition[card - 1] = 1)
-      : newCondition[card - 1]++;
-    setCondition(newCondition);
-  }
-  return <Container>{obj.map((x) => x[x.condition])}</Container>;
+  return (
+    <Container data-test="flashcard">
+      {obj.map((x) => x[x.condition])}
+    </Container>
+  );
 }
 
 const Container = styled.main`
