@@ -35,8 +35,8 @@ function App() {
     },
   ];
   const [doneFlashCards, setDoneFlashCards] = useState(0);
+  const [answer, setAnswer] = useState([0, 0, 0, 0, 0, 0, 0, 0]);
   const [condition, setCondition] = useState([1, 1, 1, 1, 1, 1, 1, 1]);
-  console.log(condition);
 
   function clickCard(card) {
     const newCondition = [...condition];
@@ -53,7 +53,7 @@ function App() {
         cards={cards}
         condition={condition}
         clickCard={clickCard}
-        onClickFunction={() => {}}
+        answer={answer}
       />
       <Footer totalFlashCards={cards.length} doneFlashCards={doneFlashCards} />
     </>

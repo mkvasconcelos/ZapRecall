@@ -4,23 +4,12 @@ import Question from "./Question";
 import Answer from "./Answer";
 import styled from "styled-components";
 
-export default function Content({
-  cards,
-  onClickFunction,
-  condition,
-  clickCard,
-}) {
+export default function Content({ cards, condition, clickCard }) {
   const obj = [];
   cards.map((c) => {
     obj.push({
       condition: condition[cards.indexOf(c)],
-      1: (
-        <FlashCard
-          number={cards.indexOf(c) + 1}
-          onClickFunction={onClickFunction}
-          clickCard={clickCard}
-        />
-      ),
+      1: <FlashCard number={cards.indexOf(c) + 1} clickCard={clickCard} />,
       2: (
         <Question
           clickCard={clickCard}
