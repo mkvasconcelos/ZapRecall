@@ -18,7 +18,7 @@ export default function FlashCard({
   );
 }
 
-const Container = styled.button`
+const Container = styled.div`
   background-color: #ffffff;
   height: 65px;
   width: 300px;

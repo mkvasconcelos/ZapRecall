@@ -35,7 +35,7 @@ export default function Question({ answer, number, clickCard, clickButton }) {
   );
 }
 
-const Container = styled.button`
+const Container = styled.div`
   background-color: #ffffd4;
   height: 130px;
   width: 300px;

@@ -12,7 +12,7 @@ export default function Content({
   answerButton,
 }) {
   const obj = [];
-  cards.map((c) => {
+  cards.map((c) =>
     obj.push({
       condition: condition[cards.indexOf(c)],
       1: (
@@ -37,8 +37,8 @@ export default function Content({
           answer={c.answer}
         />
       ),
-    });
-  });
+    })
+  );
   return <Container>{obj.map((x) => x[x.condition])}</Container>;
 }
 

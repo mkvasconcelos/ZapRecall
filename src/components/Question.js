@@ -5,15 +5,12 @@ export default function Question({ question, number, clickCard }) {
   return (
     <Container>
       <p>{question}</p>
-      <img
-        onClick={() => clickCard(number)}
-        src="assets/img/seta_virar.png"
-      ></img>
+      <button onClick={() => clickCard(number)}></button>
     </Container>
   );
 }
 
-const Container = styled.button`
+const Container = styled.div`
   background-color: #ffffd4;
   height: 130px;
   width: 300px;
@@ -28,12 +25,17 @@ const Container = styled.button`
   border: none;
   display: flex;
 
-  img {
+  button {
     position: absolute;
     bottom: 5px;
     right: 15px;
     width: 30px;
     height: 20px;
     cursor: pointer;
+    border: none;
+    background: #ffffd4;
+    background-repeat: no-repeat;
+    background-image: url("assets/img/seta_virar.png");
+    background-size: 100%;
   }
 `;

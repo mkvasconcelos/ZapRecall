@@ -4,7 +4,7 @@ import styled from "styled-components";
 export default function Header() {
   return (
     <Container>
-      <img src="assets/img/logo.png"></img>
+      <img src="assets/img/logo.png" alt="logo-zap"></img>
       <p>ZapRecall</p>
     </Container>
   );
