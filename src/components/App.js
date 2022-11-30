@@ -50,6 +50,7 @@ function App() {
     const newAnswerButton = [...answerButton];
     newAnswerButton[card - 1] = value;
     setAnswerButton(newAnswerButton);
+    setDoneFlashCards(doneFlashCards + 1);
   }
 
   return (
