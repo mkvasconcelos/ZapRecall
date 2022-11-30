@@ -11,7 +11,6 @@ export default function Question({ answer, number, clickCard, clickButton }) {
             clickCard(number);
             clickButton(number, 1);
           }}
-          className="red"
         >
           Não lembrei
         </button>
@@ -20,7 +19,6 @@ export default function Question({ answer, number, clickCard, clickButton }) {
             clickCard(number);
             clickButton(number, 2);
           }}
-          className="orange"
         >
           Quase não lembrei
         </button>
@@ -29,7 +27,6 @@ export default function Question({ answer, number, clickCard, clickButton }) {
             clickCard(number);
             clickButton(number, 3);
           }}
-          className="green"
         >
           Zap!
         </button>
@@ -46,10 +43,10 @@ const Container = styled.button`
   border-radius: 5px;
   box-shadow: 0px 4px 5px rgba(0, 0, 0, 0.15);
   font-weight: 400;
-  font-size: 18px;
+  font-size: 16px;
   color: #333333;
   position: relative;
-  padding: 15px;
+  padding: 10px;
   border: none;
   display: flex;
   text-align: start;
@@ -71,5 +68,17 @@ const Container = styled.button`
     color: #ffffff;
     border: none;
     cursor: pointer;
+  }
+
+  button:nth-child(1) {
+    background-color: #ff3030;
+  }
+
+  button:nth-child(2) {
+    background-color: #ff922e;
+  }
+
+  button:nth-child(3) {
+    background-color: #2fbe34;
   }
 `;

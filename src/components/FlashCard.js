@@ -30,7 +30,7 @@ const Container = styled.button`
   align-items: center;
   font-weight: 700;
   font-size: 16px;
-  padding: 0 15px;
+  padding: 0 10px;
   border: none;
   color: ${(props) =>
     props.answerButton === 0

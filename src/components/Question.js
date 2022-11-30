@@ -21,10 +21,10 @@ const Container = styled.button`
   border-radius: 5px;
   box-shadow: 0px 4px 5px rgba(0, 0, 0, 0.15);
   font-weight: 400;
-  font-size: 18px;
+  font-size: 16px;
   color: #333333;
   position: relative;
-  padding: 15px;
+  padding: 10px;
   border: none;
   display: flex;
 

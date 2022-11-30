@@ -40,23 +40,6 @@ export default function Content({
     });
   });
   return <Container>{obj.map((x) => x[x.condition])}</Container>;
-
-  //   return (
-  //     <Container>
-  //       {cards.map((c) =>
-  //         condition === 0 ? (
-  //           <FlashCard
-  //             number={cards.indexOf(c) + 1}
-  //             onClickFunction={onClickFunction}
-  //           />
-  //         ) : condition === 1 ? (
-  //           <Question onClickFunction={onClickFunction} question={c.question} />
-  //         ) : (
-  //           <Answer answer={c.answer} />
-  //         )
-  //       )}
-  //     </Container>
-  //   );
 }
 
 const Container = styled.main`
