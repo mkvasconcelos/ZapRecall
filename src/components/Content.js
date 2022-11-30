@@ -4,12 +4,24 @@ import Question from "./Question";
 import Answer from "./Answer";
 import styled from "styled-components";
 
-export default function Content({ cards, condition, clickCard }) {
+export default function Content({
+  cards,
+  condition,
+  clickCard,
+  clickButton,
+  answerButton,
+}) {
   const obj = [];
   cards.map((c) => {
     obj.push({
       condition: condition[cards.indexOf(c)],
-      1: <FlashCard number={cards.indexOf(c) + 1} clickCard={clickCard} />,
+      1: (
+        <FlashCard
+          number={cards.indexOf(c) + 1}
+          clickCard={clickCard}
+          answerButton={answerButton[cards.indexOf(c)]}
+        />
+      ),
       2: (
         <Question
           clickCard={clickCard}
@@ -20,6 +32,7 @@ export default function Content({ cards, condition, clickCard }) {
       3: (
         <Answer
           clickCard={clickCard}
+          clickButton={clickButton}
           number={cards.indexOf(c) + 1}
           answer={c.answer}
         />

@@ -1,18 +1,36 @@
 import React from "react";
 import styled from "styled-components";
 
-export default function Question({ answer, number, clickCard }) {
+export default function Question({ answer, number, clickCard, clickButton }) {
   return (
     <Container>
       <p>{answer}</p>
       <div>
-        <button onClick={() => clickCard(number)} className="red">
+        <button
+          onClick={() => {
+            clickCard(number);
+            clickButton(number, 1);
+          }}
+          className="red"
+        >
           Não lembrei
         </button>
-        <button onClick={() => clickCard(number)} className="orange">
+        <button
+          onClick={() => {
+            clickCard(number);
+            clickButton(number, 2);
+          }}
+          className="orange"
+        >
           Quase não lembrei
         </button>
-        <button onClick={() => clickCard(number)} className="green">
+        <button
+          onClick={() => {
+            clickCard(number);
+            clickButton(number, 3);
+          }}
+          className="green"
+        >
           Zap!
         </button>
       </div>

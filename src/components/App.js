@@ -35,7 +35,7 @@ function App() {
     },
   ];
   const [doneFlashCards, setDoneFlashCards] = useState(0);
-  const [answer, setAnswer] = useState([0, 0, 0, 0, 0, 0, 0, 0]);
+  const [answerButton, setAnswerButton] = useState([0, 0, 0, 0, 0, 0, 0, 0]);
   const [condition, setCondition] = useState([1, 1, 1, 1, 1, 1, 1, 1]);
 
   function clickCard(card) {
@@ -45,6 +45,13 @@ function App() {
       : newCondition[card - 1]++;
     setCondition(newCondition);
   }
+
+  function clickButton(card, value) {
+    const newAnswerButton = [...answerButton];
+    newAnswerButton[card - 1] = value;
+    setAnswerButton(newAnswerButton);
+  }
+
   return (
     <>
       <GlobalStyle />
@@ -53,7 +60,8 @@ function App() {
         cards={cards}
         condition={condition}
         clickCard={clickCard}
-        answer={answer}
+        answerButton={answerButton}
+        clickButton={clickButton}
       />
       <Footer totalFlashCards={cards.length} doneFlashCards={doneFlashCards} />
     </>
