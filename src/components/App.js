@@ -36,10 +36,14 @@ function App() {
   ];
   const [doneFlashCards, setDoneFlashCards] = useState(0);
   const [condition, setCondition] = useState([1, 1, 1, 1, 1, 1, 1, 1]);
-  const [list, setList] = useState([]);
+  console.log(condition);
 
   function clickCard(card) {
-    setList([...list, card]);
+    const newCondition = [...condition];
+    newCondition[card - 1] === 3
+      ? (newCondition[card - 1] = 1)
+      : newCondition[card - 1]++;
+    setCondition(newCondition);
   }
   return (
     <>
@@ -49,12 +53,7 @@ function App() {
         cards={cards}
         condition={condition}
         clickCard={clickCard}
-        onClickFunction={() => {
-          const newCondition = [...condition];
-          console.log(list[list.length - 1]);
-          newCondition[list[list.length - 1]] += 1;
-          setCondition(newCondition);
-        }}
+        onClickFunction={() => {}}
       />
       <Footer totalFlashCards={cards.length} doneFlashCards={doneFlashCards} />
     </>

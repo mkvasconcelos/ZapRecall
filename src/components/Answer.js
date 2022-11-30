@@ -1,14 +1,20 @@
 import React from "react";
 import styled from "styled-components";
 
-export default function Question({ answer }) {
+export default function Question({ answer, number, clickCard }) {
   return (
     <Container>
       <p>{answer}</p>
       <div>
-        <button className="red">Não lembrei</button>
-        <button className="orange">Quase não lembrei</button>
-        <button className="green">Zap!</button>
+        <button onClick={() => clickCard(number)} className="red">
+          Não lembrei
+        </button>
+        <button onClick={() => clickCard(number)} className="orange">
+          Quase não lembrei
+        </button>
+        <button onClick={() => clickCard(number)} className="green">
+          Zap!
+        </button>
       </div>
     </Container>
   );

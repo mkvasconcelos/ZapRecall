@@ -1,11 +1,14 @@
 import React from "react";
 import styled from "styled-components";
 
-export default function Question({ question, onClickFunction }) {
+export default function Question({ question, number, clickCard }) {
   return (
     <Container>
       <p>{question}</p>
-      <img onClick={onClickFunction} src="assets/img/seta_virar.png"></img>
+      <img
+        onClick={() => clickCard(number)}
+        src="assets/img/seta_virar.png"
+      ></img>
     </Container>
   );
 }

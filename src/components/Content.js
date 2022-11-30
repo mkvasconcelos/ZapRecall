@@ -21,8 +21,20 @@ export default function Content({
           clickCard={clickCard}
         />
       ),
-      2: <Question onClickFunction={onClickFunction} question={c.question} />,
-      3: <Answer answer={c.answer} />,
+      2: (
+        <Question
+          clickCard={clickCard}
+          number={cards.indexOf(c) + 1}
+          question={c.question}
+        />
+      ),
+      3: (
+        <Answer
+          clickCard={clickCard}
+          number={cards.indexOf(c) + 1}
+          answer={c.answer}
+        />
+      ),
     });
   });
   return <Container>{obj.map((x) => x[x.condition])}</Container>;
