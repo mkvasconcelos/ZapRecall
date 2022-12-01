@@ -11,10 +11,32 @@ export default function FlashCardCopy({
   const arr = new Array(cards.length).fill(0);
   const [answerButton, setAnswerButton] = useState([...arr]);
   const [condition, setCondition] = useState([...arr]);
-  console.log(condition);
+  const obj = {
+    1: (
+      <img
+        data-test="no-icon"
+        src="assets/img/icone_erro.png"
+        alt="wrong-icon"
+      ></img>
+    ),
+    2: (
+      <img
+        data-test="partial-icon"
+        src="assets/img/icone_quase.png"
+        alt="partial-icon"
+      ></img>
+    ),
+    3: (
+      <img
+        data-test="no-icon"
+        src="assets/img/icone_certo.png"
+        alt="right-icon"
+      ></img>
+    ),
+  };
   function clickCard(card) {
     const newCondition = [...condition];
-    newCondition[card] === 2 ? (newCondition[card] = 0) : newCondition[card]++;
+    newCondition[card]++;
     setCondition(newCondition);
   }
   function clickButton(card, value, img) {
@@ -25,49 +47,21 @@ export default function FlashCardCopy({
     setAnswerSequence(newAnswerSequence);
     setDoneFlashCards(doneFlashCards + 1);
   }
-  // const obj = [];
-  // cards.map((c) =>
-  //   obj.push({
-  //     condition: condition[cards.indexOf(c)],
-  //     0: <Closed number={cards.indexOf(c) + 1} clickCard={clickCard} />,
-  //     1: (
-  //       <Opened
-  //         clickCard={clickCard}
-  //         number={cards.indexOf(c) + 1}
-  //         question={c.question}
-  //       />
-  //     ),
-  //     2: (
-  //       <Turned
-  //         clickCard={clickCard}
-  //         number={cards.indexOf(c) + 1}
-  //         answer={c.answer}
-  //         answerButton={answerButton}
-  //         setAnswerButton={setAnswerButton}
-  //         doneFlashCards={doneFlashCards}
-  //         setDoneFlashCards={setDoneFlashCards}
-  //         answerSequence={answerSequence}
-  //         setAnswerSequence={setAnswerSequence}
-  //       />
-  //     ),
-  //     3: (
-  //       <Done
-  //         number={cards.indexOf(c) + 1}
-  //         answerButton={answerButton[cards.indexOf(c)]}
-  //       />
-  //     ),
-  //   })
-  // );
   return (
     <Content>
       {cards.map((c, i) => (
-        <Container condition={condition[i]}>
+        <Container
+          condition={condition[i]}
+          answerButton={answerButton[cards.indexOf(c)]}
+        >
           {condition[i] === 0 ? (
             <p data-test="flashcard-text">Pergunta {cards.indexOf(c) + 1}</p>
           ) : condition[i] === 1 ? (
             <p data-test="flashcard-text">{c.question}</p>
-          ) : (
+          ) : condition[i] === 2 ? (
             <p data-test="flashcard-text">{c.answer}</p>
+          ) : (
+            <p data-test="flashcard-text">Pergunta {cards.indexOf(c) + 1}</p>
           )}
           {condition[i] === 2 ? (
             <div>
@@ -111,6 +105,8 @@ export default function FlashCardCopy({
                 Zap!
               </button>
             </div>
+          ) : condition[i] === 3 ? (
+            obj[answerButton[cards.indexOf(c)]]
           ) : (
             <img
               data-test="play-btn"
@@ -136,25 +132,49 @@ const Content = styled.main`
 
 const Container = styled.div`
   background-color: ${(props) =>
-    props.condition === 0 ? "#ffffff" : "#ffffd4"};
-  height: ${(props) => (props.condition === 0 ? "65px" : "130px")};
+    props.condition === 0
+      ? "#ffffff"
+      : props.condition === 3
+      ? "#ffffff"
+      : "#ffffd4"};
+  height: ${(props) =>
+    props.condition === 0 ? "65px" : props.condition === 3 ? "65px" : "130px"};
   width: 300px;
   margin: 10px auto;
   border-radius: 5px;
   box-shadow: 0px 4px 5px rgba(0, 0, 0, 0.15);
   display: flex;
   justify-content: space-between;
-  align-items: ${(props) => props.condition === 0 && "center"};
-  font-weight: ${(props) => (props.condition === 0 ? "700" : "400")};
+  align-items: ${(props) =>
+    props.condition === 0 ? "center" : props.condition === 3 ? "center" : ""};
+  font-weight: ${(props) =>
+    props.condition === 0 ? "700" : props.condition === 3 ? "700" : "400"};
   font-size: 16px;
   color: #333333;
-  padding: ${(props) => (props.condition === 0 ? "0 10px" : "10px")};
+  padding: ${(props) =>
+    props.condition === 0
+      ? "0 10px"
+      : props.condition === 3
+      ? "0 10px"
+      : "10px"};
   border: none;
   position: relative;
+  color: ${(props) =>
+    props.answerButton === 0
+      ? "#333333"
+      : props.answerButton === 1
+      ? "#FF3030"
+      : props.answerButton === 2
+      ? "#FF922E"
+      : "#2FBE34"};
+  text-decoration-line: ${(props) =>
+    props.answerButton === 0 ? "none" : "line-through"};
 
   img {
-    width: ${(props) => (props.condition === 0 ? "23px" : "30px")};
-    height: ${(props) => (props.condition === 0 ? "23px" : "20px")};
+    width: ${(props) =>
+      props.condition === 0 ? "23px" : props.condition === 3 ? "" : "30px"};
+    height: ${(props) =>
+      props.condition === 0 ? "23px" : props.condition === 3 ? "" : "20px"};
     cursor: pointer;
     border: none;
     position: ${(props) => props.condition === 1 && "absolute"};
