@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import GlobalStyle from "./glogalStyles";
 import Footer from "./Footer";
 import Header from "./Header";
-import Content from "./Content";
+import FlashCard from "./FlashCard";
 
 export default function App() {
   const cards = [
@@ -39,7 +39,7 @@ export default function App() {
     <>
       <GlobalStyle />
       <Header />
-      <Content
+      <FlashCard
         cards={cards}
         setDoneFlashCards={setDoneFlashCards}
         doneFlashCards={doneFlashCards}

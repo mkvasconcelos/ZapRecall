@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 
-export default function Question({
+export default function Turned({
   answer,
   number,
   clickCard,
@@ -18,9 +18,10 @@ export default function Question({
   }
   return (
     <Container>
-      <p>{answer}</p>
+      <p data-test="flashcard-text">{answer}</p>
       <div>
         <button
+          data-test="no-btn"
           onClick={() => {
             clickCard(number);
             clickButton(number, 1);
@@ -29,6 +30,7 @@ export default function Question({
           Não lembrei
         </button>
         <button
+          data-test="partial-btn"
           onClick={() => {
             clickCard(number);
             clickButton(number, 2);
@@ -37,6 +39,7 @@ export default function Question({
           Quase não lembrei
         </button>
         <button
+          data-test="zap-btn"
           onClick={() => {
             clickCard(number);
             clickButton(number, 3);

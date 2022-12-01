@@ -1,11 +1,11 @@
 import React from "react";
 import styled from "styled-components";
 
-export default function Question({ question, number, clickCard }) {
+export default function Opened({ question, number, clickCard }) {
   return (
     <Container>
-      <p>{question}</p>
-      <button onClick={() => clickCard(number)}></button>
+      <p data-test="flashcard-text">{question}</p>
+      <button data-test="turn-btn" onClick={() => clickCard(number)}></button>
     </Container>
   );
 }

@@ -1,62 +1,66 @@
-import React from "react";
+import React, { useState } from "react";
+import Closed from "./Closed";
+import Opened from "./Opened";
+import Turned from "./Turned";
+import Done from "./Done";
 import styled from "styled-components";
 
 export default function FlashCard({
-  number,
-  onClickFunction,
-  clickCard,
-  answerButton,
+  cards,
+  doneFlashCards,
+  setDoneFlashCards,
 }) {
+  const arr = new Array(cards.length).fill(0);
+  const [answerButton, setAnswerButton] = useState([...arr]);
+  const [condition, setCondition] = useState([...arr]);
+  function clickCard(card) {
+    const newCondition = [...condition];
+    newCondition[card - 1]++;
+    // newCondition[card - 1] === 2
+    //   ? (newCondition[card - 1] = 0)
+    //   : newCondition[card - 1]++;
+    setCondition(newCondition);
+  }
+  const obj = [];
+  cards.map((c) =>
+    obj.push({
+      condition: condition[cards.indexOf(c)],
+      0: <Closed number={cards.indexOf(c) + 1} clickCard={clickCard} />,
+      1: (
+        <Opened
+          clickCard={clickCard}
+          number={cards.indexOf(c) + 1}
+          question={c.question}
+        />
+      ),
+      2: (
+        <Turned
+          clickCard={clickCard}
+          number={cards.indexOf(c) + 1}
+          answer={c.answer}
+          answerButton={answerButton}
+          setAnswerButton={setAnswerButton}
+          doneFlashCards={doneFlashCards}
+          setDoneFlashCards={setDoneFlashCards}
+        />
+      ),
+      3: (
+        <Done
+          number={cards.indexOf(c) + 1}
+          answerButton={answerButton[cards.indexOf(c)]}
+        />
+      ),
+    })
+  );
   return (
-    <Container answerButton={answerButton} onClick={onClickFunction}>
-      <p>Pergunta {number}</p>
-      <button
-        onClick={() => clickCard(number)}
-        disabled={answerButton === 0 ? false : true}
-      ></button>
+    <Container data-test="flashcard">
+      {obj.map((x) => x[x.condition])}
     </Container>
   );
 }
 
-const Container = styled.div`
-  background-color: #ffffff;
-  height: 65px;
-  width: 300px;
-  margin: 25px auto;
-  border-radius: 5px;
-  box-shadow: 0px 4px 5px rgba(0, 0, 0, 0.15);
+const Container = styled.main`
+  margin-bottom: 100px;
   display: flex;
-  justify-content: space-between;
-  align-items: center;
-  font-weight: 700;
-  font-size: 16px;
-  padding: 0 10px;
-  border: none;
-  color: ${(props) =>
-    props.answerButton === 0
-      ? "#333333"
-      : props.answerButton === 1
-      ? "#FF3030"
-      : props.answerButton === 2
-      ? "#FF922E"
-      : "#2FBE34"};
-  text-decoration-line: ${(props) =>
-    props.answerButton === 0 ? "none" : "line-through"};
-
-  button {
-    width: 23px;
-    height: 23px;
-    cursor: pointer;
-    border: none;
-    background-color: #ffffff;
-    background-repeat: no-repeat;
-    background-image: ${(props) =>
-      props.answerButton === 0
-        ? "url('assets/img/seta_play.png')"
-        : props.answerButton === 1
-        ? "url('assets/img/icone_erro.png')"
-        : props.answerButton === 2
-        ? "url('assets/img/icone_quase.png')"
-        : "url('assets/img/icone_certo.png')"};
-  }
+  flex-direction: column;
 `;
