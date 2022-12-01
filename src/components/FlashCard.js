@@ -9,6 +9,8 @@ export default function FlashCard({
   cards,
   doneFlashCards,
   setDoneFlashCards,
+  answerSequence,
+  setAnswerSequence,
 }) {
   const arr = new Array(cards.length).fill(0);
   const [answerButton, setAnswerButton] = useState([...arr]);
@@ -16,9 +18,6 @@ export default function FlashCard({
   function clickCard(card) {
     const newCondition = [...condition];
     newCondition[card - 1]++;
-    // newCondition[card - 1] === 2
-    //   ? (newCondition[card - 1] = 0)
-    //   : newCondition[card - 1]++;
     setCondition(newCondition);
   }
   const obj = [];
@@ -42,6 +41,8 @@ export default function FlashCard({
           setAnswerButton={setAnswerButton}
           doneFlashCards={doneFlashCards}
           setDoneFlashCards={setDoneFlashCards}
+          answerSequence={answerSequence}
+          setAnswerSequence={setAnswerSequence}
         />
       ),
       3: (
@@ -53,8 +54,10 @@ export default function FlashCard({
     })
   );
   return (
-    <Container data-test="flashcard">
-      {obj.map((x) => x[x.condition])}
+    <Container>
+      {obj.map((x) => (
+        <div data-test="flashcard">{x[x.condition]}</div>
+      ))}
     </Container>
   );
 }

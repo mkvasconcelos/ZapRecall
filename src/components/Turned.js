@@ -9,11 +9,15 @@ export default function Turned({
   setAnswerButton,
   doneFlashCards,
   setDoneFlashCards,
+  answerSequence,
+  setAnswerSequence,
 }) {
-  function clickButton(card, value) {
+  function clickButton(card, value, img) {
     const newAnswerButton = [...answerButton];
     newAnswerButton[card - 1] = value;
+    const newAnswerSequence = [...answerSequence, img];
     setAnswerButton(newAnswerButton);
+    setAnswerSequence(newAnswerSequence);
     setDoneFlashCards(doneFlashCards + 1);
   }
   return (
@@ -24,7 +28,7 @@ export default function Turned({
           data-test="no-btn"
           onClick={() => {
             clickCard(number);
-            clickButton(number, 1);
+            clickButton(number, 1, "assets/img/icone_erro.png");
           }}
         >
           Não lembrei
@@ -33,7 +37,7 @@ export default function Turned({
           data-test="partial-btn"
           onClick={() => {
             clickCard(number);
-            clickButton(number, 2);
+            clickButton(number, 2, "assets/img/icone_quase.png");
           }}
         >
           Quase não lembrei
@@ -42,7 +46,7 @@ export default function Turned({
           data-test="zap-btn"
           onClick={() => {
             clickCard(number);
-            clickButton(number, 3);
+            clickButton(number, 3, "assets/img/icone_certo.png");
           }}
         >
           Zap!

@@ -3,9 +3,27 @@ import styled from "styled-components";
 
 export default function Done({ number, answerButton }) {
   const obj = {
-    1: <img data-test="no-icon" src="assets/img/icone_erro.png"></img>,
-    2: <img data-test="partial-icon" src="assets/img/icone_quase.png"></img>,
-    3: <img data-test="no-icon" src="assets/img/icone_certo.png"></img>,
+    1: (
+      <img
+        data-test="no-icon"
+        src="assets/img/icone_erro.png"
+        alt="wrong-icon"
+      ></img>
+    ),
+    2: (
+      <img
+        data-test="partial-icon"
+        src="assets/img/icone_quase.png"
+        alt="partial-icon"
+      ></img>
+    ),
+    3: (
+      <img
+        data-test="no-icon"
+        src="assets/img/icone_certo.png"
+        alt="right-icon"
+      ></img>
+    ),
   };
   return (
     <Container answerButton={answerButton}>

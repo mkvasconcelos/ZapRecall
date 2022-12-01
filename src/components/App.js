@@ -35,6 +35,7 @@ export default function App() {
     },
   ];
   const [doneFlashCards, setDoneFlashCards] = useState(0);
+  const [answerSequence, setAnswerSequence] = useState([]);
   return (
     <>
       <GlobalStyle />
@@ -43,8 +44,14 @@ export default function App() {
         cards={cards}
         setDoneFlashCards={setDoneFlashCards}
         doneFlashCards={doneFlashCards}
+        answerSequence={answerSequence}
+        setAnswerSequence={setAnswerSequence}
       />
-      <Footer totalFlashCards={cards.length} doneFlashCards={doneFlashCards} />
+      <Footer
+        cards={cards}
+        doneFlashCards={doneFlashCards}
+        answerSequence={answerSequence}
+      />
     </>
   );
 }
