@@ -3,6 +3,7 @@ import GlobalStyle from "./glogalStyles";
 import Footer from "./Footer";
 import Header from "./Header";
 import FlashCard from "./FlashCard";
+import FlashCardCopy from "./FlashCardCopy";
 
 export default function App() {
   const cards = [
@@ -40,7 +41,14 @@ export default function App() {
     <>
       <GlobalStyle />
       <Header />
-      <FlashCard
+      {/* <FlashCard
+        cards={cards}
+        setDoneFlashCards={setDoneFlashCards}
+        doneFlashCards={doneFlashCards}
+        answerSequence={answerSequence}
+        setAnswerSequence={setAnswerSequence}
+      /> */}
+      <FlashCardCopy
         cards={cards}
         setDoneFlashCards={setDoneFlashCards}
         doneFlashCards={doneFlashCards}
