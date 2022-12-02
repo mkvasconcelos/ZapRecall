@@ -7,6 +7,7 @@ export default function FlashCardCopy({
   setDoneFlashCards,
   answerSequence,
   setAnswerSequence,
+  setAllRight,
 }) {
   const arr = new Array(cards.length).fill(0);
   const [answerButton, setAnswerButton] = useState([...arr]);
@@ -46,6 +47,14 @@ export default function FlashCardCopy({
     setAnswerButton(newAnswerButton);
     setAnswerSequence(newAnswerSequence);
     setDoneFlashCards(doneFlashCards + 1);
+    answerMessage();
+  }
+  function answerMessage() {
+    if (doneFlashCards === cards.length - 1) {
+      answerSequence.includes("assets/img/icone_erro.png")
+        ? setAllRight(-1)
+        : setAllRight(1);
+    }
   }
   return (
     <Content>

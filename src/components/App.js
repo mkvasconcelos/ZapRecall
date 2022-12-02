@@ -37,28 +37,33 @@ export default function App() {
   ];
   const [doneFlashCards, setDoneFlashCards] = useState(0);
   const [answerSequence, setAnswerSequence] = useState([]);
+  const [allRight, setAllRight] = useState(0);
+
   return (
     <>
       <GlobalStyle />
       <Header />
-      {/* <FlashCard
+      <FlashCard
         cards={cards}
         setDoneFlashCards={setDoneFlashCards}
         doneFlashCards={doneFlashCards}
         answerSequence={answerSequence}
         setAnswerSequence={setAnswerSequence}
-      /> */}
-      <FlashCardCopy
-        cards={cards}
-        setDoneFlashCards={setDoneFlashCards}
-        doneFlashCards={doneFlashCards}
-        answerSequence={answerSequence}
-        setAnswerSequence={setAnswerSequence}
+        setAllRight={setAllRight}
       />
+      {/* <FlashCardCopy
+        cards={cards}
+        setDoneFlashCards={setDoneFlashCards}
+        doneFlashCards={doneFlashCards}
+        answerSequence={answerSequence}
+        setAnswerSequence={setAnswerSequence}
+        setAllRight={setAllRight}
+      /> */}
       <Footer
         cards={cards}
         doneFlashCards={doneFlashCards}
         answerSequence={answerSequence}
+        allRight={allRight}
       />
     </>
   );

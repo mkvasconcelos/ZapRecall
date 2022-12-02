@@ -11,6 +11,8 @@ export default function Turned({
   setDoneFlashCards,
   answerSequence,
   setAnswerSequence,
+  setAllRight,
+  cards,
 }) {
   function clickButton(card, value, img) {
     const newAnswerButton = [...answerButton];
@@ -19,6 +21,14 @@ export default function Turned({
     setAnswerButton(newAnswerButton);
     setAnswerSequence(newAnswerSequence);
     setDoneFlashCards(doneFlashCards + 1);
+    answerMessage();
+  }
+  function answerMessage() {
+    if (doneFlashCards === cards.length - 1) {
+      answerSequence.includes("assets/img/icone_erro.png")
+        ? setAllRight(-1)
+        : setAllRight(1);
+    }
   }
   return (
     <Container>

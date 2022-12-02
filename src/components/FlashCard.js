@@ -11,6 +11,7 @@ export default function FlashCard({
   setDoneFlashCards,
   answerSequence,
   setAnswerSequence,
+  setAllRight,
 }) {
   const arr = new Array(cards.length).fill(0);
   const [answerButton, setAnswerButton] = useState([...arr]);
@@ -43,6 +44,8 @@ export default function FlashCard({
           setDoneFlashCards={setDoneFlashCards}
           answerSequence={answerSequence}
           setAnswerSequence={setAnswerSequence}
+          setAllRight={setAllRight}
+          cards={cards}
         />
       ),
       3: (
