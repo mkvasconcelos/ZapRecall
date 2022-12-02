@@ -19,7 +19,7 @@ export default function Done({ number, answerButton }) {
     ),
     3: (
       <img
-        data-test="no-icon"
+        data-test="zap-icon"
         src="assets/img/icone_certo.png"
         alt="right-icon"
       ></img>
