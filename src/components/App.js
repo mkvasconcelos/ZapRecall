@@ -49,7 +49,15 @@ export default function App() {
       ) : (
         <>
           <Header />
-          <FlashCardCopy
+          {/* <FlashCardCopy
+            cards={cards}
+            setDoneFlashCards={setDoneFlashCards}
+            doneFlashCards={doneFlashCards}
+            answerSequence={answerSequence}
+            setAnswerSequence={setAnswerSequence}
+            setAllRight={setAllRight}
+          /> */}
+          <FlashCard
             cards={cards}
             setDoneFlashCards={setDoneFlashCards}
             doneFlashCards={doneFlashCards}
@@ -57,14 +65,6 @@ export default function App() {
             setAnswerSequence={setAnswerSequence}
             setAllRight={setAllRight}
           />
-          {/* <FlashCard
-        cards={cards}
-        setDoneFlashCards={setDoneFlashCards}
-        doneFlashCards={doneFlashCards}
-        answerSequence={answerSequence}
-        setAnswerSequence={setAnswerSequence}
-        setAllRight={setAllRight}
-      /> */}
           <Footer
             cards={cards}
             doneFlashCards={doneFlashCards}
