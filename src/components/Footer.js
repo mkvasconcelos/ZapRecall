@@ -10,7 +10,7 @@ export default function Footer({
   return (
     <Container data-test="footer">
       {allRight !== 0 && (
-        <section>
+        <section data-test="finish-text">
           <div>
             <img
               src={
@@ -32,7 +32,16 @@ export default function Footer({
       </p>
       <div>
         {answerSequence.map((i) => (
-          <img src={i}></img>
+          <img
+            data-test={
+              i === "assets/img/icone_certo.png"
+                ? "zap-icon"
+                : i === "assets/img/icone_quase.png"
+                ? "partial-icon"
+                : "no-icon"
+            }
+            src={i}
+          ></img>
         ))}
       </div>
     </Container>

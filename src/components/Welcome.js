@@ -6,7 +6,9 @@ export default function Welcome({ setWelcome }) {
     <Container>
       <img src="assets/img/logo.png"></img>
       <p>ZapRecall</p>
-      <button onClick={() => setWelcome(false)}>Iniciar Recall!</button>
+      <button data-test="start-btn" onClick={() => setWelcome(false)}>
+        Iniciar Recall!
+      </button>
     </Container>
   );
 }
